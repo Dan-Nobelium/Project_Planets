@@ -44,7 +44,8 @@ const planetColors = {
 // Independent Variables Definition
 const probability_trade = [[.5], [.5], [.5]];
 const probability_shield = [[.5], [.5], [.5]];
-let ship_attack_damage = [[-100, 'percent'], [-50, 'points'], [20, 'points']]; // A negative number represents a bonus.
+let ship_attack_damage = [[20, 'percent'], [0, 'points'], [100, 'points']]; // A negative number represents a bonus.
+// Example ship bonus: let ship_attack_damage = [[-100, 'percent'], [-50, 'points'], [20, 'points']]; // A negative number represents a bonus.
 ship_attack_damage = jsPsych.randomization.shuffle(ship_attack_damage); //randomises the order of the ship damage array (ship_attack_damage)
 //const show_whether_shield_blocked_attack_or_bonus = false;
 const show_whether_shield_blocked_attack_or_bonus = true; // for testing
@@ -1060,18 +1061,18 @@ var contingency_catch = {
 let timeline = []; // This is the master timeline, the experiment runs sequentially based on the objects pushed into this array.
 
 
-// // Induction
+// Induction
 timeline.push(fullscreen);
 timeline.push(consent_block);
 timeline.push(demographics_block);
 timeline.push(instructionCheckWithFeedback);
 
-// // // Attention check
+// Attention check
 timeline.push(cfi_block);
 timeline.push(htq_block);
 timeline.push(audit_block);
 
-// // Phase 1, no ships
+// Phase 1, no ships
 addBlocksToTimeline(timeline, planet_noship, nBlocks_p1, nTrialspBlk);
 timeline.push(valence_p1);
 timeline.push(infer_p1_A);
@@ -1081,7 +1082,7 @@ timeline.push(p1_q3_triangle);
 timeline.push(p1_q4_triangle);
 
 
-// // Phase2, ships
+// Phase2, ships
 timeline.push(phaseTwoInstructions);
 addBlocksToTimeline(timeline, planet_ship, nBlocks_p2, nTrialspBlk);
 timeline.push(valence_p2);
